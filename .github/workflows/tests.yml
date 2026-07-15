@@ -356,8 +356,8 @@ jobs:
         path: ./result_images
     timeout-minutes: 15
   create-issue:
-    if: ${{ !cancelled() && (!cancelled() && (failure() && github.event_name == 'schedule'))
-      }}
+    if: ${{ !cancelled() && (!cancelled() && (!cancelled() && (failure() && github.event_name
+      == 'schedule'))) }}
     needs:
     - test
     permissions:
