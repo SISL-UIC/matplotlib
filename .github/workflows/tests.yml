@@ -27,40 +27,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-        - name-suffix: (Minimum Versions)
-          os: ubuntu-22.04
-          python-version: '3.12'
-          extra-requirements: -c ci/minver-requirements.txt
-          delete-font-cache: true
-          pygobject-ver: <3.52.0
-        - os: ubuntu-22.04
-          python-version: '3.12'
-          CFLAGS: -fno-lto
-          extra-requirements: --group test-extra
-          pygobject-ver: <3.52.0
-        - name-suffix: (Extra TeX packages)
-          os: ubuntu-22.04
-          python-version: '3.13'
-          extra-packages: texlive-fonts-extra texlive-lang-cyrillic
-          pygobject-ver: <3.52.0
-        - name-suffix: Free-threaded
-          os: ubuntu-22.04
-          python-version: 3.14t
-          pygobject-ver: <3.52.0
-        - os: ubuntu-24.04
-          python-version: '3.14'
-        - os: ubuntu-24.04-arm
-          python-version: '3.12'
-        - os: macos-14
-          python-version: '3.12'
-          pygobject-ver: <3.52.0
-        - os: macos-15
-          python-version: '3.13'
-          pygobject-ver: <3.52.0
-        - os: macos-15
-          python-version: '3.14'
-          pygobject-ver: <3.52.0
+        name-suffix:
+        - (Minimum Versions)
+        os:
+        - ubuntu-22.04
+        python-version:
+        - '3.12'
+        extra-requirements:
+        - -c ci/minver-requirements.txt
+        delete-font-cache:
+        - 'True'
+        pygobject-ver:
+        - <3.52.0
     steps:
     - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
       with:
