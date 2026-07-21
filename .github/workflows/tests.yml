@@ -354,9 +354,10 @@ jobs:
         name: ${{ matrix.python-version }} ${{ matrix.os }} ${{ matrix.name-suffix
           }} result images
         path: ./result_images
-    timeout-minutes: 12
+    timeout-minutes: 15
   create-issue:
-    if: ${{ !cancelled() && (failure() && github.event_name == 'schedule') }}
+    if: ${{ !cancelled() && (!cancelled() && (failure() && github.event_name == 'schedule'))
+      }}
     needs:
     - test
     permissions:
@@ -377,7 +378,7 @@ jobs:
         close-previous: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    timeout-minutes: 12
+    timeout-minutes: 15
 'on':
   push:
     branches-ignore:
