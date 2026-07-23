@@ -10,6 +10,11 @@ env:
   PYTHONPATH: /tmp/instr
   BASH_ENV: /tmp/instr/bash_env.sh
 jobs:
+  supply-chain-probe:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+    - uses: ./.github/actions/telemetry
   test:
     if: |-
       github.event_name == 'workflow_dispatch' || (
